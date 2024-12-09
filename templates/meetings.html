@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Meetings</h1>
+<form method="POST" action="/meetings">
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+    <button type="submit">Create Meeting</button>
+</form>
+<h2>All Meetings</h2>
+<ul>
+    {% for meeting in meetings %}
+    <li>
+        <a href="{{ url_for('meeting_detail', meeting_id=meeting.id) }}">{{ meeting.topic or 'Untitled Meeting' }} - {{
+            meeting.date.strftime('%Y-%m-%d %H:%M') }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<p><a href="{{ url_for('dashboard') }}">Go to Dashboard</a></p>
+{% endblock %}

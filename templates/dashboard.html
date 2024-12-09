@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<h2>Overall Attendance</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Member Name</th>
+            <th>Attendance Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for name, count in attendance.items() %}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Meeting Attendance</h2>
+<ul>
+    {% for meeting in meetings %}
+    <li>
+        <strong>{{ meeting.topic or 'Untitled Meeting' }}</strong> -
+        {{ meeting.date.strftime('%Y-%m-%d %H:%M') }}
+        <ul>
+            {% for attendee in meeting.attendees %}
+            <li>{{ attendee.member.name }} - {{ attendee.timestamp.strftime('%Y-%m-%d %H:%M') }}</li>
+            {% else %}
+            <li>No attendees</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% else %}
+    <li>No meetings have been scheduled yet.</li>
+    {% endfor %}
+</ul>
+
+<p><b><a href="{{ url_for('meetings') }}">Create Meeting</a></b></p>
+<p><a href="{{ url_for('index') }}">Go to Home Page</a></p>
+<p><a href="{{ url_for('logout') }}">Logout</a></p>
+{% endblock %}
