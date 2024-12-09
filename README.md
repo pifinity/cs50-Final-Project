@@ -50,9 +50,9 @@ http://127.0.0.1:5000/
 ## Sign-In
 At the landing page, you will need to login in order to access the app. Visit the home page and sign in through Admin Login to gain access to the rest of the information.
 
-##Dashboard
-Navigate to /dashboard to view the admin dashboard.
-Log in as an admin to create and manage meetings.
-Meeting Management
-Navigate to /meetings to create new meetings.
-View attendees for each meeting by clicking on a meeting link.
+## Dashboard
+Navigate to /dashboard to view the admin dashboard.  
+Log in as an admin to create and manage meetings.  
+Meeting Management  
+Navigate to /meetings to create new meetings.  
+View attendees for each meeting by clicking on a meeting link.  
