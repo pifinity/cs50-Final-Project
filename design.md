@@ -10,7 +10,7 @@ The Ice Skating Club Sign-In App is a web application built using Flask and SQLA
 The purpose of this app would be to keep track of the sign ins of ice skating club members. The app would save the time the user logged in, the meeting the user would be attending, and of course their name. My system  uses a `Member` model to store user details, ensuring no duplicate names are added. If a user signs in for the first time, they are automatically added to the database. Each sign-in is logged with a timestamp and optionally linked to a specific meeting.
 
 - **Meeting Management**:
-The admin has the ability create a meeting. When a certain meeting is selected, it'll show a sign in screen for outside users. When outside users log in, they will be associated with this meeting. Meetings can be specified with a date, time, and optional topic. Each meeting is stored in the `Meeting` model, which is linked to `SignIn` entries via a `meeting_id` foreign key. This relational design allows for granular tracking of attendance at specific meetings.
+The admin has the ability create a meeting. When a certain meeting is selected, it'll show a sign in screen for outside users. When outside users log in, they will be associated with this meeting. Meetings can be specified with a date, time, and optional topic. Each meeting is stored in the `Meeting` model, which is linked to `SignIn` entries via a `meeting_id` foreign key. 
 
 - **Admin Dashboard**:
 The dashboard provides an overview of member attendance, with total counts per member. It displays individual meetings and their attendees, offering visibility into participation trends. It uses dynamic filtering and aggregation queries via SQLAlchemy to compute statistics efficiently.
