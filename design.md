@@ -2,25 +2,18 @@
 
 ## **Overview**
 
-The Ice Skating Club Sign-In App is a web application built using Flask and SQLAlchemy. It was designed to streamline the process of tracking attendance at ice skating club meetings, manage meetings, and provide an intuitive admin dashboard for attendance statistics. The app emphasizes simplicity for end-users while maintaining flexibility and scalability for administrators.
+The Ice Skating Club Sign-In App is a web application built using Flask and SQLAlchemy. When I started desgining this app, I talked with the head of the ice skating club to see what needs I should address. Taking in the needs of the club, I wanted to deisgn an app to track attendance at ice skating club meetings, manage meetings, and provide an intuitive admin dashboard for attendance statistics. The app would be simple for users (they would only need to input their name) while providing a complete overview of members and meetings for admins.
 
 ## **Key Features and Design Decisions**
 
-### **1. Core Functionality**
-- **Member Sign-In**:
-  - Members can sign in by simply entering their name on the home page.
-  - The system uses a `Member` model to store user details, ensuring no duplicate names are added. If a user signs in for the first time, they are automatically added to the database.
-  - Each sign-in is logged with a timestamp and optionally linked to a specific meeting.
+### **1. Base Functionality**
+The purpose of this app would be to keep track of the sign ins of ice skating club members. The app would save the time the user logged in, the meeting the user would be attending, and of course their name. My system  uses a `Member` model to store user details, ensuring no duplicate names are added. If a user signs in for the first time, they are automatically added to the database. Each sign-in is logged with a timestamp and optionally linked to a specific meeting.
 
 - **Meeting Management**:
-  - Admins can create meetings by specifying a date, time, and optional topic.
-  - Each meeting is stored in the `Meeting` model, which is linked to `SignIn` entries via a `meeting_id` foreign key.
-  - This relational design allows for granular tracking of attendance at specific meetings.
+The admin has the ability create a meeting. When a certain meeting is selected, it'll show a sign in screen for outside users. When outside users log in, they will be associated with this meeting. Meetings can be specified with a date, time, and optional topic. Each meeting is stored in the `Meeting` model, which is linked to `SignIn` entries via a `meeting_id` foreign key. This relational design allows for granular tracking of attendance at specific meetings.
 
 - **Admin Dashboard**:
-  - Provides an overview of member attendance, with total counts per member.
-  - Displays individual meetings and their attendees, offering visibility into participation trends.
-  - Uses dynamic filtering and aggregation queries via SQLAlchemy to compute statistics efficiently.
+The dashboard provides an overview of member attendance, with total counts per member. It displays individual meetings and their attendees, offering visibility into participation trends. It uses dynamic filtering and aggregation queries via SQLAlchemy to compute statistics efficiently.
 
 ### **2. Database Design**
 The app uses SQLAlchemy ORM with the following models:
@@ -32,8 +25,6 @@ class Member(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     sign_ins = db.relationship('SignIn', backref='member', lazy=True)
 ```
-- Members are uniquely identified by their names.
-- A one-to-many relationship links members to their sign-ins.
 
 #### **SignIn**
 ```python
@@ -54,23 +45,19 @@ class Meeting(db.Model):
     topic = db.Column(db.String(200), nullable=True)
     attendees = db.relationship('SignIn', backref='meeting', lazy=True)
 ```
-- Stores metadata about each meeting.
-- A one-to-many relationship links meetings to their attendees via `SignIn`.
 
 ### **3. Application Architecture**
-The app adheres to a clean separation of concerns, with Flask routes handling HTTP requests, templates managing the front-end, and SQLAlchemy managing database interactions.
+Flask is used in the frontend to handle HTTP requests and templates. I am using SQLAlchemy in the backend to manage database interactions.
 
 #### **Routes**
-The app includes routes for:
 - Home (`/`): Member sign-in.
 - Admin Dashboard (`/dashboard`): View attendance statistics and meeting records.
 - Meetings (`/meetings`): Create and view meetings.
 - Meeting Detail (`/meetings/<meeting_id>`): View attendees for a specific meeting and allow sign-ins.
 
 #### **Templates**
-Templates are structured to ensure reusability and maintainability:
 - **`base.html`**: A shared layout with navigation links.
-- **`index.html`**: The sign-in page.
+- **`index.html`**: sign-in page.
 - **`dashboard.html`**: Displays attendance and meeting statistics.
 - **`meetings.html`**: Allows admins to create and view meetings.
 - **`meeting_detail.html`**: Displays meeting attendees and provides a sign-in form.
@@ -80,26 +67,12 @@ Templates are structured to ensure reusability and maintainability:
 ## **Design Decisions**
 
 ### **1. Framework Choice**
-Flask was chosen for its lightweight nature, making it easy to quickly prototype and build the app. SQLAlchemy ORM complements Flask well, providing an abstraction over SQL for managing relational data.
+I chose flask because it is quick to set up. The app doesn't require heavy processing power, and flask is a capable lightweight framework 
 
-### **2. Database Design**
-The relational structure ensures that:
-- Members and their sign-ins are efficiently linked.
-- Meeting attendance is dynamically calculated via relationships, reducing redundancy and potential data inconsistencies.
+### **3. Admin Loginn**
+I implemented a log in for admin users. If not logged in, a user would not be able to view the dashboard or create meetings. While its good enough for now, for security in production, I could use OAuth and jwt. Otherwise this app doesn't require too much security. The main concern would be protecting user names. 
 
-### **3. Admin Authentication**
-Basic session-based authentication was implemented for admin access. While simple, it provides adequate security for this use case. In a production setting, more robust authentication (e.g., OAuth or JWT) could be added.
 
-### **4. User Interface**
-The UI was kept simple to ensure ease of use:
-- Members only need to enter their name to sign in.
-- Admins can easily navigate between the dashboard and meeting management pages.
-
-### **5. Extensibility**
-The app was designed with future features in mind:
-- Adding more fields (e.g., email) to the `Member` model.
-- Exporting attendance data to CSV.
-- Sending email notifications for meetings.
 
 ---
 
@@ -118,6 +91,4 @@ The app was designed with future features in mind:
 
 ## **Conclusion**
 
-The Ice Skating Sign-In App is a robust and scalable solution for managing attendance at ice skating club meetings. The modular design allows for easy maintenance and extensibility, making it a valuable tool for club administrators.
-
---- 
+I think my ice skating sign in app has a lot of functionality and meets the goals I set out to do. It works without issue and could make a great addition to the ice skating club in the future.
