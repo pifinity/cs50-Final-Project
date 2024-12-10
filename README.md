@@ -5,7 +5,7 @@ The Ice Skating Club Sign-In App helps the ice skating club efficiently manage m
 
 ## Using the App  
 
-When you open the app, the first page you encounter is the **Sign-In Page**. Members can sign in simply by entering their name into the input field and clicking the sign-in button. Each sign-in is automatically recorded with the current date and time. If a member is signing in for the first time, their name will be added to the database, ensuring they are recognized in future attendance records.  
+When you open the app, the first page you encounter is the **Sign-In Page**. For now, the password is set to ***password*** by default. Members can sign in simply by entering their name into the input field and clicking the sign-in button. Each sign-in is automatically recorded with the current date and time. If a member is signing in for the first time, their name will be added to the database, ensuring they are recognized in future attendance records.  
 
 Admins have additional privileges. From the **Sign-In Page**, admins can access the **Admin Login** button to securely log in and unlock features such as creating meetings and viewing attendance statistics. Admins must log in to access the **Admin Dashboard** and **Meeting Management** pages.  
 
