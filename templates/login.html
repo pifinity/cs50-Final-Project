@@ -1,9 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    body {
+        background-color: #e3f2fd;
+        /* Light blue background */
+    }
+
+    .admin-dashboard {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    h1,
+    h2 {
+        color: #0275d8;
+        /* Bootstrap primary color */
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        margin-right: 10px;
+    }
+</style>
 <h1>Admin Login</h1>
+<p>(The testing password is "password")</p>
 <form method="POST" action="/login">
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
     <button type="submit">Login</button>
 </form>
+<p><a href="{{ url_for('index') }}">Go to Home Page</a></p>
 {% endblock %}

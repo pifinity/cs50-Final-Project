@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    body {
+        background-color: #e3f2fd;
+        /* Light blue background */
+    }
+
+    .admin-dashboard {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    h1,
+    h2 {
+        color: #0275d8;
+        /* Bootstrap primary color */
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        margin-right: 10px;
+    }
+</style>
 <h1>{{ meeting.topic or 'Meeting' }}</h1>
 <p>Date: {{ meeting.date.strftime('%Y-%m-%d %H:%M') }}</p>
 

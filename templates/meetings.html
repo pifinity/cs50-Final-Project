@@ -1,24 +1,68 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<style>
+    body {
+        background-color: #e3f2fd;
+        /* Light blue background */
+    }
+
+    .admin-dashboard {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    h1,
+    h2 {
+        color: #0275d8;
+        /* Bootstrap primary color */
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        margin-right: 10px;
+    }
+</style>
+
+<!-- Page Title -->
 <h1>Meetings</h1>
+
+<!-- Form to create a new meeting -->
 <form method="POST" action="/meetings">
+    <!-- Input field for the meeting topic -->
     <label for="topic">Topic:</label>
     <input type="text" id="topic" name="topic">
+
+    <!-- Input field for the meeting date -->
     <label for="date">Date:</label>
     <input type="date" id="date" name="date" required>
+
+    <!-- Input field for the meeting time -->
     <label for="time">Time:</label>
     <input type="time" id="time" name="time" required>
+
+    <!-- Submit button to create the meeting -->
     <button type="submit">Create Meeting</button>
 </form>
+
+<!-- Section displaying all meetings -->
 <h2>All Meetings</h2>
 <ul>
     {% for meeting in meetings %}
     <li>
-        <a href="{{ url_for('meeting_detail', meeting_id=meeting.id) }}">{{ meeting.topic or 'Untitled Meeting' }} - {{
-            meeting.date.strftime('%Y-%m-%d %H:%M') }}</a>
+        <!-- Link to the meeting details page with the topic and date -->
+        <a href="{{ url_for('meeting_detail', meeting_id=meeting.id) }}">
+            {{ meeting.topic or 'Untitled Meeting' }} - {{ meeting.date.strftime('%Y-%m-%d %H:%M') }}
+        </a>
     </li>
     {% endfor %}
 </ul>
 
+<!-- Link to navigate back to the dashboard -->
 <p><a href="{{ url_for('dashboard') }}">Go to Dashboard</a></p>
+
 {% endblock %}
