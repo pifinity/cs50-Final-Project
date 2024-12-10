@@ -1,3 +1,7 @@
+# Short Video
+https://youtu.be/02ubSzif2tM
+This video presents my project.
+
 # Ice Skating Club Sign-In App  
 
 The Ice Skating Club Sign-In App helps the ice skating club efficiently manage member sign-ins, track attendance for specific meetings, and maintain overall attendance records. I built this with Flask and SQLAlchemy, with the chief features being meeting management and a comprehensive admin dashboard.
