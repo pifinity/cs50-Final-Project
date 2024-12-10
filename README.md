@@ -1,58 +1,28 @@
 # Ice Skating Club Sign-In App  
-I built this using Flask and SQLAlchemy. It helps the ice skating club keep track of member sign-ins for weekly meetings, track attendance for specific meetings, and manage overall attendance records.  
 
-## Features
-### Member Sign-In:  
-Allows members to sign in with their names.  
-Automatically records the date and time of the sign-in.  
-
-### Meeting Management:  
-Admins can create meetings with specific dates, times, and topics.  
-Tracks which members attended each meeting.  
-
-### Attendance Dashboard:  
-Displays overall attendance for each member.  
-Displays a breakdown of attendees for each meeting.  
+The Ice Skating Club Sign-In App helps the ice skating club efficiently manage member sign-ins, track attendance for specific meetings, and maintain overall attendance records. I built this with Flask and SQLAlchemy, with the chief features being meeting management and a comprehensive admin dashboard.
 
 
-## Installation Prerequisites  
-Python 3.7 or higher  
-Flask  
-SQLAlchemy  
-Flask-Migrate (optional, for database migrations)  
+## Using the App  
 
-## Instructions on how to run app:  
+When you open the app, the first page you encounter is the **Sign-In Page**. Members can sign in simply by entering their name into the input field and clicking the sign-in button. Each sign-in is automatically recorded with the current date and time. If a member is signing in for the first time, their name will be added to the database, ensuring they are recognized in future attendance records.  
 
-### Clone the repository:  
-git clone <repository-url>  
-cd ice_skating_club  
+Admins have additional privileges. From the **Sign-In Page**, admins can access the **Admin Login** button to securely log in and unlock features such as creating meetings and viewing attendance statistics. Admins must log in to access the **Admin Dashboard** and **Meeting Management** pages.  
 
-### Create and activate a virtual environment:  
-python -m venv venv  
-source venv/bin/activate  # On Windows: venv\Scripts\activate  
+Once logged in, the **Admin Dashboard** is the primary interface for monitoring attendance. Here, admins can view the total number of times each member has signed in, as well as a detailed breakdown of attendees for each specific meeting. The dashboard provides a comprehensive overview of participation trends and helps identify active members.  
 
+To manage meetings, navigate to the **Meeting Management** page by clicking the "See Meetings" button on the dashboard. On this page, admins can create new meetings by specifying the date, time, and topic. After creating a meeting, it will appear in the list of all scheduled meetings. Clicking on a specific meeting link takes you to the meeting’s details page, where you can view a list of attendees who signed in for that meeting, along with the timestamps of their sign-ins.  
 
-### Install dependencies:  
-pip install -r requirements.txt  
+The app is designed to be intuitive and easy to navigate. Members only need to enter their name on the home page to log their attendance, while admins have a streamlined workflow for managing meetings and viewing attendance statistics. By providing these features in a simple and accessible manner, the Ice Skating Club Sign-In App ensures efficient record-keeping and meeting management for the club.
 
-### Set up the database:  
-flask db init  
-flask db migrate -m "Initial migration"  
-flask db upgrade  
+---
 
-### Run the application:  
-flask run  
+## Setting Up the App  
 
-Open your browser and navigate to:  
-http://127.0.0.1:5000/  
+To set up and run the app, you will need Python 3.7 or higher. Start by cloning the repository and navigating to the project directory. Create a virtual environment, activate it, and install the required dependencies listed in the `requirements.txt` file. Next, initialize the database using Flask-Migrate by running `flask db init`, followed by `flask db migrate` and `flask db upgrade` to set up the schema. Once the database is ready, start the app by running `flask run`, and access it in your browser at `http://127.0.0.1:5000/`.  
 
-# Usage
-## Sign-In
-At the landing page, you will need to login in order to access the app. Visit the home page and sign in through Admin Login to gain access to the rest of the information.
+With the app running, you can immediately begin using the sign-in functionality on the home page. Admins can log in to access additional features, create meetings, and monitor attendance using the dashboard. The simple setup process ensures that the app is ready for use in just a few steps.
 
-## Dashboard
-Navigate to /dashboard to view the admin dashboard.  
-Log in as an admin to create and manage meetings.  
-Meeting Management  
-Navigate to /meetings to create new meetings.  
-View attendees for each meeting by clicking on a meeting link.  
+---
+
+This documentation should provide all the guidance needed to navigate the app effectively, starting from the sign-in page and progressing to the admin dashboard and meeting management. If any questions arise, the step-by-step instructions will help resolve them quickly.
